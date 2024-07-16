@@ -1,0 +1,35 @@
+#caption {
+  color: #7fa2a6;
+  font-size: 0.5em;
+}
+
+
+#slide-header {
+  background: rgba(0,0,0, 0.2);
+  color: whitesmoke;
+  text-align: center;
+  margin-top:10%;
+  font-size: 2em;
+}
+
+#slide-subheader {
+  background: rgba(0,0,0, 0.2);
+  color: whitesmoke;
+  text-align: center;
+  margin: 100px auto;
+  width: 50%;
+}
+
+#section-header {
+  display: inline-block;
+  background: rgba(0,0,0, 0.2);
+  font-size: 1.5em;
+  color: whitesmoke;
+  text-align: center;
+  margin: 50px auto;
+}
+
+.reveal .slides section .fragment.highlight-current-blue.current-fragment {
+    color: #d5a04c;
+}
+

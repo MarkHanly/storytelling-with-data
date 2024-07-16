@@ -1,0 +1,681 @@
+---
+execute:
+  echo: false
+format:
+  revealjs: 
+    footer: "HDAT9800 Visualisation and Communication of Health Data"
+    slide-number: true
+    embed-resources: true
+    theme: 
+      - night
+      - custom.scss
+    link-external-newwindow: true
+    link-external-icon: true
+    css: styles.css
+    bibliography: references.bib
+    suppress-bibliography: false
+
+---
+
+```{r}
+#| include: false
+
+# Libraries
+library(knitr)
+library(ggplot2)
+library(dplyr)
+
+```
+
+##  {background-image="images/cover-image.jpg"}
+
+
+### Storytelling with data {#slide-header}
+
+::: {#slide-subheader}
+
+Mark Hanly
+
+HDAT9800 Guest Lecture
+
+July 2024
+:::
+
+<!-- Introduction -->
+## {background-image="images/section-image.jpg"}
+
+### Introduction. Storytelling is the oldest data storage format {#section-header}
+
+## 
+
+![](images/floppy-disk.jpg)
+
+::: {#caption}
+8-inch, 5¼-inch, and 3½-inch floppy disks. Invented in 1971 by IBM. From [Wikipedia](https://en.wikipedia.org/wiki/Floppy_disk)
+:::
+
+
+## 
+
+![](images/ogham.jpg)
+
+::: {#caption}
+Ogham Stone. 400AD-1000AD [mallonireland.com](https://mallonireland.com/blogs/news/ogham-script)
+:::
+
+::: {.notes}
+Ogham stones are ancient standing stones carved with a script used for the early Irish language. They were used between the 4th and 10th centuries to mark territory, memorialize people, and provide information.
+:::
+
+
+## 
+
+![](images/quipo.jpg)
+
+::: {#caption}
+Quipu in the Museo Machu Picchu, Casa Concha, Cusco. Andead South America 2600 BC – c.1600 AD [Wikipedia](https://en.wikipedia.org/wiki/Quipu)
+:::
+
+::: {.notes}
+Quipus were tools used by the Inca to record information. They consisted of knotted strings that represented numbers and other data.
+:::
+
+## 
+
+![](images/nunn-2015-figure1.png)
+
+::: {#caption}
+Map of Australia showing the 21 coastal locations from which Aboriginal stories about coastal
+inundation are described. From @nunn2016aboriginal
+:::
+
+::: {.notes}
+
+* Aboriginal communities along the Australian coast have long shared stories of significant coastal changes, describing how the sea once covered land that is now submerged. These narratives have been passed down through generations, preserving a vivid memory of ancient events.
+
+* Researchers, intrigued by these stories, began to examine geological and archaeological evidence. They found that sea levels rose dramatically at the end of the last Ice Age, around 7,000 to 10,000 years ago, aligning with the Aboriginal accounts of coastal inundation.
+
+* The stories provide detailed descriptions of the landscape before and after the flooding. These include references to lost islands, submerged reefs, and changes in the coastline, which match with scientific reconstructions of ancient coastlines.
+
+
+:::
+
+##
+
+> This study suggests that Aboriginal stories of coastal drowning in Australia, from locations thousands of kilometres apart, date from 7,250–13,070 years ago (**5,300–11,120 BC**). If this is the case, then not only does it corroborate the fact—hitherto inferred but never
+shown to have been observed—of postglacial sea-level rise but it also demonstrates an **extraordinary longevity for these stories**
+
+::: {#caption}
+@nunn2016aboriginal
+:::
+
+
+::: {.notes}
+
+The study suggests that these oral traditions have been maintained accurately for millennia, demonstrating an extraordinary cultural continuity. This challenges the common perception that oral histories are less reliable over long periods compared to written records.
+
+:::
+
+
+## 
+
+
+<!-- Storytelling for data visualisation -->
+## {background-image="images/section-image.jpg"}
+
+### How storytelling can improve data visualisation {#section-header}
+
+## How storytelling can improve data visualisation
+
+1. Aesthetics 
+1. Narrative
+1. Emotion 
+
+
+
+<!-- Storytelling for data visualisation -->
+## {background-image="images/section-image.jpg"}
+
+### Aesthetics {#section-header}
+
+## Aesthetics in storytelling
+
+::: {layout-nrow=2}
+
+![Romeo and Juliet (1996)](images/romeo-and-juliet-1996.jpg){width=60%}
+
+![Gnomeo and Juliet (2011)](images/gnomeo-and-juliet-2011.jpg){width=60%}
+
+![West Side Story (1961)](images/west-side-story-1961.jpg){width=60%}
+
+![Romeo and Juliet (1968)](images/romeo-and-juliet-1968.jpg){width=60%}
+
+:::
+
+
+::: {.notes}
+
+"Romeo + Juliet" (1996): Aesthetic: Modern, Urban
+
+"West Side Story" (1961): Aesthetic: 1950s New York City, Musical
+
+"Gnomeo & Juliet" (2011): Aesthetic: Animated, Family-Friendly
+
+"Romeo and Juliet" (1968): Aesthetic: Historical, Authentic
+
+:::
+
+## Aesthetic-Usability Effect
+
+> people perceive more aesthetic designs as much more intuitive than those considered to be less aesthetically pleasing. 
+
+## Aesthetics in data visualisation
+
+::: {.incremental}
+1. Color
+1. Font
+1. Text Hierarchy
+:::
+
+::: {.fragment}
+`aes()`
+:::
+
+
+<!-- Color -->
+## Aesthetics in data visualisation
+
+<ol>
+<li style="color: #d5a04c;">Color</li>
+<li style="color: #7fa2a6;">Font</li>
+<li style="color: #7fa2a6;">Text hierarchy</li>
+</ol>
+
+
+## 
+
+![](images/stock-prices-english.png)
+
+::: {#caption}
+Nikkei Stock Average (Nikkei 225). See [indexes.nikkei.co.jp](https://indexes.nikkei.co.jp/)
+:::
+
+
+## 
+
+![](images/stock-prices-japanese.png)
+
+::: {#caption}
+Nikkei Stock Average (Nikkei 225). See [indexes.nikkei.co.jp](https://indexes.nikkei.co.jp/)
+:::
+
+
+<!-- Font -->
+## Aesthetics in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Color</li>
+<li style="color: #d5a04c;">Font</li>
+<li style="color: #7fa2a6;">Text hierarchy</li>
+</ol>
+
+## Font 
+
+> Words have meaning. Type has spirit. The combination is spectacular.
+
+::: {#caption} 
+---Paula Scher
+:::
+
+## 
+
+![](images/living-among-snakes.png)
+
+
+::: {#caption}
+Living among snakes in Queensland, Australia by Diana MacDonald. See [didoesdigital.com/snakes](https://didoesdigital.com/snakes/)
+:::
+
+
+<!-- Text hierarchy -->
+## Aesthetics in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Color</li>
+<li style="color: #7fa2a6;">Font</li>
+<li style="color: #d5a04c;">Text hierarchy</li>
+</ol>
+
+## 
+
+![](images/you-will-read-this-first.jpg)
+
+
+##
+
+```{r}
+#| echo: true
+ggplot(
+  data=ToothGrowth, 
+  aes(x=dose, y=len, fill=supp)) + 
+  geom_col(position = 'dodge')
+```
+
+##
+
+![](images/cara-thompson-level-up-plots.png)
+
+::: {#caption}
+Level Up Your Plots by Cara Thompson [see cararthompson.com/talks](https://www.cararthompson.com/talks/nhsr2023-level-up-workshop/)
+:::
+
+
+
+<!-- Narrative -->
+## {background-image="images/section-image.jpg"}
+
+### Narrative {#section-header}
+
+##  Narrative in storytelling
+
+{{< video https://www.youtube.com/watch?v=oP3c1h8v2ZQ
+    title="Kurt Vonnegut on the Shapes of Stories"
+    start="21"
+    width='100%'
+    height='85%'
+    aspect-ratio="21x9" 
+>}}
+
+::: {#caption}
+Kurt Vonnegut on the Shapes of Stories. From [YouTube](https://www.youtube.com/watch?v=oP3c1h8v2ZQ)
+:::
+
+##  Narrative in data visualisation
+
+::: {.incremental}
+1. Titles and annotations
+1. Narrative structure
+1. Interactivity
+:::
+
+<!-- Titles and annotations -->
+## Narrative in data visualisation
+
+<ol>
+<li style="color: #d5a04c;">Titles and annotations</li>
+<li style="color: #7fa2a6;">Narrative structure</li>
+<li style="color: #7fa2a6;">Interactivity</li>
+</ol>
+
+
+## 
+
+![](images/hospital-waits-in-england-1.png){width=80%}
+
+::: {#caption}
+How can the next government improve hospital waits in England? by The Health Foundation. See [health.ork.uk](https://www.health.org.uk/publications/long-reads/how-can-the-next-government-improve-hospital-waits-in-england)
+:::
+
+
+
+## 
+
+![](images/hospital-waits-in-england-2.png){width=80%}
+
+::: {#caption}
+How can the next government improve hospital waits in England? by The Health Foundation. See [health.ork.uk](https://www.health.org.uk/publications/long-reads/how-can-the-next-government-improve-hospital-waits-in-england)
+:::
+
+
+## 
+
+```{r}
+#| echo: true
+plot(astsa::birth)
+```
+
+## 
+
+![](images/okboomer2_composite_poster-200-01.png){width=60%}
+
+::: {#caption}
+Visualising the Baby Boom [by Kieran Healy](https://kieranhealy.org/blog/archives/2023/12/20/the-baby-boom-again/)
+:::
+
+
+## 
+
+![](images/okboomer-for-sale.png)
+
+::: {#caption}
+[society6.com](https://society6.com/product/visualizing-the-baby-boom-time-series_print?sku=s6-13435579p4a1v3)
+:::
+
+##
+
+{{< video https://www.youtube.com/embed/W939S6nOuoY
+    title="May 2024 | Climate Communicators"
+    start="9"
+    width='100%'
+    height='85%'
+    aspect-ratio="21x9" 
+>}}
+
+::: {#caption}
+University of Monash Climate Communicators program. See [monash.edu/mcccrh/projects/climate-communicators](https://www.monash.edu/mcccrh/projects/climate-communicators)
+:::
+
+
+<!-- Narrative structure -->
+## Narrative in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Titles and annotations</li>
+<li style="color: #d5a04c;">Narrative structure</li>
+<li style="color: #7fa2a6;">Interactivity</li>
+</ol>
+
+
+## Narrative structure
+
+>We are the storytelling ape, and we are incredibly good at it. As soon as we are old enough to want to understand what is happening around us, we begin to live in a world of stories. **We think in narrative**
+
+::: {#caption}
+---Terry Pratchett
+:::
+
+## Narrative structure
+
+The simplest story structure: 
+
+1. Setup
+1. Conflict
+1. Resolution
+
+## 
+
+![](images/grattan-sugar-tax-1.png)
+
+::: {#caption}
+Sickly sweet: It's time for a sugary drinks tax [The Grattan Institute](https://grattan.edu.au/report/sickly-sweet/)
+:::
+
+## 
+
+![](images/grattan-sugar-tax-2.png)
+
+::: {#caption}
+Sickly sweet: It's time for a sugary drinks tax [The Grattan Institute](https://grattan.edu.au/report/sickly-sweet/)
+:::
+
+## 
+
+![](images/grattan-sugar-tax-3.png)
+
+::: {#caption}
+Sickly sweet: It's time for a sugary drinks tax [The Grattan Institute](https://grattan.edu.au/report/sickly-sweet/)
+:::
+
+## 
+
+![](images/grattan-sugar-tax-4.png)
+
+::: {#caption}
+Sickly sweet: It's time for a sugary drinks tax [The Grattan Institute](https://grattan.edu.au/report/sickly-sweet/)
+:::
+
+
+## Narrative structure
+
+::: {.notes}
+Basic story structure: 
+- Setup
+- Conflict
+- Resolution
+:::
+
+::: {.fragment .highlight-current-blue}
+1. Diabetes has nearly tripled since 2000
+:::
+
+::: {.fragment .highlight-current-blue}
+2. One can of soft drink can have nearly a day's worth of sugar
+:::
+
+::: {.fragment .highlight-current-blue}
+3. A tiered tax encourages manufacturers to reduce the sugar in their drinks
+4. Under our proposed tax, people would switch from
+high-sugar drinks to low- or no-sugar drinks
+:::
+
+
+
+<!-- Interactivity -->
+## Narrative in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Titles and annotations</li>
+<li style="color: #7fa2a6;">Narrative structure</li>
+<li style="color: #d5a04c;">Interactivity</li>
+</ol>
+
+
+## 
+
+![](images/what-if.png){width=60%}
+
+::: {#caption}
+What if? by Owen Cho. See [healthpolicy.github.io/nhs_whatif](https://healthpolicy.github.io/nhs_whatif/)
+:::
+
+
+## 
+
+![](images/great-war-centenary.png)
+
+::: {#caption}
+The Great War Centenary. See [poppyfield.org](https://poppyfield.org/)
+:::
+
+
+
+<!-- Storytelling for data visualisation -->
+## {background-image="images/section-image.jpg"}
+
+### Emotion {#section-header}
+
+
+## Emotion in data visualisation
+
+> They may forget what you said — but they will never forget **how you made them feel**.
+
+::: {.caption}
+---Carl W. Buehner
+:::
+
+## Emotion in data visualisation
+
+::: {.incremental}
+1. Empathy
+1. Fear
+1. Delight
+:::
+
+<!-- Empathy -->
+## Emotion in data visualisation
+
+<ol>
+<li style="color: #d5a04c;">Empathy</li>
+<li style="color: #7fa2a6;">Fear</li>
+<li style="color: #7fa2a6;">Delight</li>
+</ol>
+
+
+## 
+
+![](images/us-gun-killings.png)
+
+::: {#caption}
+US gun killings in 2018. See [guns.periscopic.com](https://guns.periscopic.com/)
+:::
+
+<!-- Fear -->
+## Emotion in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Empathy</li>
+<li style="color: #d5a04c;">Fear</li>
+<li style="color: #7fa2a6;">Delight</li>
+</ol>
+
+## 
+
+![](images/global-mean-sea-level.max-2000x2000.png){width=60%}
+
+::: {#caption}
+little picture: sea level trend. See [climate.esa.int/en/littlepicturescompetition](https://climate.esa.int/en/littlepicturescompetition/)
+:::
+
+## 
+
+![](images/LeaningTowerofSeaLevel_fullsize.max-2000x2000.png){width=60%}
+
+::: {#caption}
+little picture: sea level trend. See [climate.esa.int/en/littlepicturescompetition](https://climate.esa.int/en/littlepicturescompetition/)
+:::
+
+
+## 
+
+![](images/fire-streamgraph.max-2000x2000.png){width=60%}
+
+::: {#caption}
+little picture: burned area in europe. See [climate.esa.int/en/littlepicturescompetition](https://climate.esa.int/en/littlepicturescompetition/)
+:::
+
+
+## 
+
+![](images/83_Burned_area_in_europe_RESIZE.max-400x400.png) 
+
+::: {#caption}
+little picture: burned area in europe. See [climate.esa.int/en/littlepicturescompetition](https://climate.esa.int/en/littlepicturescompetition/)
+:::
+
+::: {.notes}
+Here using the same data but introducing the visual analogy of smoke by adding a burned matchstick
+:::
+
+
+<!-- Delight -->
+## Emotion in data visualisation
+
+<ol>
+<li style="color: #7fa2a6;">Empathy</li>
+<li style="color: #7fa2a6;">Fear</li>
+<li style="color: #d5a04c;">Delight</li>
+</ol>
+
+
+## 
+
+![](images/not-a-single-origin-1.jpg){width=80%}
+
+::: {#caption}
+Not a Single Origin by Small Multiples. See [notasingleorigin.com](https://notasingleorigin.com/)
+:::
+
+## 
+
+![](images/not-a-single-origin-2.jpg)
+
+::: {#caption}
+Not a Single Origin by Small Multiples. See [notasingleorigin.com](https://notasingleorigin.com/)
+:::
+
+## 
+
+![](images/not-a-single-origin-3.jpg)
+
+::: {#caption}
+Not a Single Origin by Small Multiples. See [notasingleorigin.com](https://notasingleorigin.com/)
+:::
+
+
+## {.smaller}
+
+* **Westmead** <span style="color: #d5a04c;">_Indian_</span> Cardamom | Coconut | Cashew
+* **Concord** <span style="color: #d5a04c;">_Italian_</span> Strawberry | Balsamic | Caramel | Orelys
+* **Earlwood** <span style="color: #d5a04c;">_Greek_</span> Ouzo | Lemon | Anise
+* **Greenacre** <span style="color: #d5a04c;">_Lebanese_</span> Date | Rosewater | Pistachio
+* **Hurstville** <span style="color: #d5a04c;">_Chinese_</span> Red Bean | Coconut | Mandarin
+* **Londonderry** <span style="color: #d5a04c;">_Maltese_</span> Orange | Cinnamon | Almond
+* **Manly** <span style="color: #d5a04c;">_Scottish_</span> Scotch Whiskey | Toffee
+* **Mosman** <span style="color: #d5a04c;">_English_</span> Marmalade | Almond
+* **Randwick** <span style="color: #d5a04c;">_Irish_</span> Baileys | Coffee | Honeycomb
+* **Rooty Hill** <span style="color: #d5a04c;">_Filipino_</span> Taro | Coconut | Sesame
+* **Banksia** <span style="color: #d5a04c;">_Macedonian_</span> Honey | Peach | Rhubarb
+* **Cabramatta** <span style="color: #d5a04c;">_Vietnamese_</span> Caramel | Banana | Coffee | Peanut
+
+::: {#caption}
+Not a Single Origin by Small Multiples. See [notasingleorigin.com](https://notasingleorigin.com/)
+:::
+
+
+
+## Storytelling with data---Review
+
+<hr style="border: 1px solid #d5a04c;">
+
+:::: {.columns}
+
+::: {.column width="33%"}
+#### Aesthetics
+* Color
+* Font
+* Text hierarchy
+:::
+
+::: {.column width="33%"}
+#### Narrative
+* Titles and annotations
+* Narrative Structure
+* Interactivity
+:::
+
+::: {.column width="33%"}
+#### Emotion
+* Empathy
+* Fear
+* Delight
+:::
+
+::::
+
+
+##  {background-image="images/cover-image.jpg"}
+
+### Thank you for listening {#slide-header}
+
+
+## Exercise: Hospital Ramping {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Read about it in [The Conversation](https://theconversation.com/ambulance-ramping-is-getting-worse-in-australia-heres-why-and-what-we-can-do-about-it-232720)
+
+:::
+
+::: {.column width="50%"}
+![](images/activity-image.jpg){width=80%}
+:::
+
+::::
+
+
+
+## References
+
+::: {#refs}
+:::
